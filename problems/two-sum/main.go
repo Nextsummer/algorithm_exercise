@@ -8,7 +8,18 @@ import (
 
 func main() {
 	nums := []int{3, 2, 4}
-	fmt.Println(twoSumDeRand(nums, 6))
+	fmt.Println(twoSumHash(nums, 6))
+}
+
+func twoSumHash(nums []int, target int) []int {
+	numMap := make(map[int]int, 2)
+	for i, num := range nums {
+		if j, ok := numMap[target-num]; ok {
+			return []int{i, j}
+		}
+		numMap[num] = i
+	}
+	return nil
 }
 
 func twoSumDeRand(nums []int, target int) []int {
